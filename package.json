@@ -1,0 +1,66 @@
+{
+  "name": "heading-creator",
+	"displayName": "heading-creator",
+	"description": "Visual Studio Code extension that allows to quickly structure code by formatting a line to a heading.",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.50.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+        "onCommand:heading-creator.createHeading"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [{
+            "command": "heading-creator.createHeading",
+            "title": "To heading"
+
+		}],
+		"configuration": {
+			"type": "object",
+			"title": "Heading Creator Configuration",
+			"properties": {
+				"heading-creator.fillCharacter": {
+					"type": "string",
+					"default": "=",
+					"description": "The fill character used for the heading borders."
+				},
+				"heading-creator.minimumBorderSize": {
+					"type": "number",
+					"default": "4",
+					"description": "The minimum amount of border character printed to the left and right of the actual heading value."
+				},
+				"heading-creator.commentBegin": {
+					"type": "string",
+					"default": "/* ",
+					"description": "Begin of each line (should usually be a comment delimiter of the programming language you are using)."
+				},
+				"heading-creator.commentEnd": {
+					"type": "string",
+					"default": " */",
+					"description": "End of each line (should usually be a comment delimiter of the programming language you are using)."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+        "@types/vscode": "^1.67.0",
+        "@types/glob": "^7.2.0",
+        "@types/mocha": "^9.1.1",
+        "@types/node": "16.x",
+        "eslint": "^8.16.0",
+        "glob": "^8.0.3",
+        "mocha": "^10.0.0",
+        "typescript": "^4.7.2",
+        "@vscode/test-electron": "^2.1.3"
+    }
+
+}
